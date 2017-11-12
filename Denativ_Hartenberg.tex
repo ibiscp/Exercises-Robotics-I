@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\begin{document}
+
+\title{Denavit Hartenberg}
+\author{Ibis Prevedello}
+
+\maketitle
+
+\section{Step by step}
+
+\begin{enumerate}
+	\item Choose axis $z_i$ along the axis of joint $i+1$ starting from the base with $z_0$
+	\begin{itemize}
+		\item For $z_n$ as there is no joint $n+1$, if joint $n$ is revolute, align $z_n$ with $z$\textsubscript{n-1}, if joint is prismatic chose $z_n$ arbitrarily
+	\end{itemize}
+	\item Choose axis $x_i$ along the common normal to axes $z$\textsubscript{i-1} and $z_i$ with direction from joint $i$ to joint $i+1$
+	\begin{itemize}
+		\item If $z$\textsubscript{i-1} and $z_i$ are parallel, then the direction of $x_i$ is from $z$\textsubscript{i-1} to $z_i$
+		\item If $z$\textsubscript{i-1} and $z_i$ are collinear, $x_i$ can be chosen arbitrarily	
+	\end{itemize}
+\item Assign angles for the revolute joints, starting with $q_1$ in $z_0$ until $z$\textsubscript{n-1}
+\item Assign variables for prismatic joints
+\end{enumerate}
+
+Obs: If the joint is twisting or prismatic, put the frame $O_i$ with the frame $O$\textsubscript{i-1}
+
+\section{Construct table of parameters}
+\begin{itemize}
+	\item $\alpha_i$ - angle between $z$\textsubscript{i-1} and $z_i$ around $x_i$ axis
+	\item $a_i$ - distance between $O$\textsubscript{i-1} and $O_i$ about $x_i$ axis
+	\item $d_i$ - distance between $O$\textsubscript{i-1} and $O_i$ about $z$\textsubscript{i-1} axis (variable if joint is PRISMATIC)
+	\item $\theta_i$ - angle between $x$\textsubscript{i-1} and $x_i$ around $z$\textsubscript{i-1} axis (variable if joint is REVOLUTE)
+\end{itemize}
+
+\end{document}
