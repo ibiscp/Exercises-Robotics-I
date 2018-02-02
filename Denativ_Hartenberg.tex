@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{pgfplots}
 
 \begin{document}
 
@@ -33,5 +35,31 @@ Obs: If the joint is twisting or prismatic, put the frame $O_i$ with the frame $
 	\item $d_i$ - distance between $O$\textsubscript{i-1} and $O_i$ about $z$\textsubscript{i-1} axis (variable if joint is PRISMATIC)
 	\item $\theta_i$ - angle between $x$\textsubscript{i-1} and $x_i$ around $z$\textsubscript{i-1} axis (variable if joint is REVOLUTE)
 \end{itemize}
+
+\section{Denavit-Hartenberg matrix}
+$$
+\textsuperscript{i-1}A_i(q_1) =
+\begin{bmatrix}
+c\theta_i & -c\alpha_is\theta_i & s\alpha_is\theta_i & a_ic\theta_i \\
+s\theta_i & c\alpha_ic\theta_i & -s\alpha_ic\theta_i & a_is\theta_i \\
+0 & s\alpha_i & c\alpha_i & d_i \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+\section{Sin and Cos graphs}
+\begin{center}
+\begin{tikzpicture}[scale=0.7, transform shape]
+    \begin{axis}[domain=-pi:pi, xtick = {-3.14,-1.57,0,1.57,3.14}, xticklabels = {$-\pi$,$-\pi/2$,0,$\pi/2$,$\pi$}, yticklabels=\empty, title=Sin]
+    \addplot [mark=none]{sin(deg(x))};
+    \end{axis}
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[scale=0.7, transform shape]
+    \begin{axis}[domain=-pi:pi, xtick = {-3.14,-1.57,0,1.57,3.14}, xticklabels = {$-\pi$,$-\pi/2$,0,$\pi/2$,$\pi$}, yticklabels=\empty, title=Cos]
+    \addplot [mark=none]{cos(deg(x))};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
 
 \end{document}
